@@ -1,0 +1,77 @@
+Basic Concepts
+---------------
+
+
+Types of Component
+-------------------
+
+Difference between Class based and Function based Components
+
+Class Based Component                                              Functional based Component
+--------------------------------------------------                ---------------------------------
+
+1. uses class which extends from react component, its render              1. JS Pure function to accept props and return JSX elements.
+method must return JSX elements.
+2. Statefull component.                                                   2. Sateless component
+3. It requires render method to return JSX.                               3. No need to use render method.
+4. Constructor used to initialize state.                                  4. No need to use constructor. 
+5. uses Lifecycle Methods in component.                                   5.  5. No lifecycle methods are available.
+6. Component is alive depending on lifecycle                              6. It executes from top to bottom, once it returns JSX it is not alive.
+7. No hooks are used.                                                     7. Hooks used to provide React features.
+
+React Features
+---------------
+
+- React State : used to store value in a component, is an object, whenever state changes component will re-render, to change the state use setState(value)
+
+
+- React Component Life Cycle Methods
+1) Mounting phase : putting JSX into DOM
+        - constructor()
+        - getDerivedStateFromProps()
+        - render() (putting JSX into DOM)
+        -componentDidMount()
+2) Updating phase : when component is updating
+        - getDerivedStateFromProps()
+        - shouldComponentUpdate() returns boolean value
+        - render()
+        - getSnapShotBeforeUpdate()
+        - componentDidUpdate()
+3) Unmounting phase : removal of a component from DOM 
+        - componentWillUnmount()
+
+
+React Hooks
+------------
+- Hooks are used to allow functional components to have React Features.
+- Predefined functions in react.
+- to use a hook in functional component, it needs to be called.
+
+        Rules to call a Hook
+        ---------------------
+            1. import hook from react component.
+            2. Hooks can be called at the top level of a component.
+            3. Hooks cannot be conditional.
+
+- Two types of Hooks
+    1) Predefined Hooks
+        -useState Hook : used to create state in functional component.
+        syntax: const [stateName,setStateName] =  useState(initialValue)
+        - useEffect Hook : used to provide side effects to the component
+        syntax: useEffect(callback,dependency(optional))
+          -callback : used to provide effects using function.
+          - dependency: decide when side effects applied to the component
+           1) No dependency: side effects will be applied everytime to the component.
+           2) empty array [] : side effects will be applied only at the time of component creation.
+           3) [state,props,variable] : side effects will be applied at the time of component creation and changing of state/props/variable that is used in the dependency.
+
+    2) Customized Hooks
+        - create a js file with filename that starts with "use"
+        - inside the file, define a function with name same as the filename.
+
+- Handling Forms in React : how it handles data when it changes also when it submitted.
+ -  in react, form data must be handled by react component. to store data, it has to use state.
+ - while submitting the form,use preventDefault() to avoid unnecessary refreshiong of the page.
+ - categorize component depending on how data is managed by component in Forms.
+   1) Controlled component : data stored in component state.
+   2) Unconctrolled component: data used by html references.(useRef hook is used)
